@@ -1,0 +1,16 @@
+[
+    {
+        "user_id": "1",
+        "username": "Sisay",
+        "user_email": "sisayfk@gmail.com",
+        "user_status": "0",
+        "password": "collab"
+    },
+    {
+        "user_id": "2",
+        "username": "Tewodros",
+        "user_email": "tedxmekuriya@gmail.com",
+        "user_status": "0",
+        "password": "collab"
+    }
+]

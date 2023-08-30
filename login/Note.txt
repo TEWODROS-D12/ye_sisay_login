@@ -1,0 +1,80 @@
+
+Go to boxicons.com; then click Usage and under 'Usage as a Font', 
+copy the link of css and paste it into your 
+'head' part of index.html to load their CSS.
+
+Click on their icon/logo at the top left part.
+
+
+
+home_page.php
+<!-- <?php
+        session_start();
+        if (isset($_SESSION['pwd']) && isset($_SESSION['name'])) {
+
+        ?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <br> <br>
+    <h2 style="text-align: center; color: blueviolet; border-bottom: 4px solid blueviolet; margin: 10px 0;">
+        Welcome <?php echo $_SESSION['fname']; ?>
+    </h2>
+    <a href="logout.php" style="font-size: larger; font-weight: 600; text-decoration: none;">Logout</a>
+</body>
+
+</html>
+
+<!-- 
+<?php
+        } else {
+            header("Location: index.php");
+            exit();
+        }
+?> -->
+
+
+authentication.php inside Config folder
+<!-- <?php
+        ?>
+<br>
+<br> -->
+
+<?php
+include("db.php");
+
+$username = $_POST['fname']; // fname is the name of my input tag.
+$password = $_POST["password"];
+
+// to prevent  from mysql injection
+$username = stripslashes($username);
+$password = stripslashes($password);
+$username = mysqli_real_escape_string($conn, $username);
+$username = mysqli_real_escape_string($conn, $password);
+
+$query = "select * from users where username = '$username' and password = '$password'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$count = mysqli_num_rows($result);
+
+if ($count > 0) {
+    echo "<h2>
+    <center>
+        Login successful!
+    </center>
+    </h2>";
+} else {
+    echo "<h2>
+    <center>
+        Login failed!
+    </center>
+    </h2>";
+}
